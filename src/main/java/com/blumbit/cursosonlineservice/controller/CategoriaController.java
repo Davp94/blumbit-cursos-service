@@ -1,7 +1,10 @@
 package com.blumbit.cursosonlineservice.controller;
 
+import com.blumbit.cursosonlineservice.dto.request.CategoriaRequest;
+import com.blumbit.cursosonlineservice.dto.response.CategoriaResponse;
 import com.blumbit.cursosonlineservice.entities.Categoria;
 import com.blumbit.cursosonlineservice.repository.CategoriaRepository;
+import com.blumbit.cursosonlineservice.service.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,50 +15,36 @@ import java.util.Optional;
 @RequestMapping("/categoria")
 public class CategoriaController {
 
-/*  Inyeccion de dependencias con anotaciones
-    @Autowired
-    CategoriaRepository categoriaRepository;*/
-
-    /*  Inyeccion de dependencias por constructor
-    */
-    private final CategoriaRepository categoriaRepository;
+    private final ICategoriaService categoriaService;
 
     @Autowired
-    public CategoriaController(CategoriaRepository categoriaRepository) {
-        this.categoriaRepository = categoriaRepository;
+    public CategoriaController(ICategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
     }
 
     @GetMapping()
-    public List<Categoria> getCategorias(){
-        return this.categoriaRepository.findAll();
+    public List<CategoriaResponse> getCategorias(){
+        return this.categoriaService.getCategorias();
     }
 
-    @GetMapping(":id")
-    public Optional<Categoria> getCategoriasById(@PathVariable Short id){
-        return this.categoriaRepository.findById(id);
+    @GetMapping("/{id}")
+    public Optional<CategoriaResponse> getCategoriasById(@PathVariable Short id){
+        return this.categoriaService.getCategoriasById(id);
     }
 
     @PostMapping()
-    public Categoria createCategoria(@RequestBody Categoria categoria){
-        return this.categoriaRepository.save(categoria);
+    public CategoriaResponse createCategoria(@RequestBody CategoriaRequest categoriaRequest){
+        return this.categoriaService.createCategoria(categoriaRequest);
     }
 
-    @PutMapping()
-    public Categoria updateCategoria(@RequestBody Categoria categoria){
-        Categoria categoriaFinded = this.categoriaRepository.findById(categoria.catId).orElse(null);
-
-        if(categoriaFinded != null){
-            categoriaFinded.setCatNombre(categoria.getCatNombre());
-            categoriaFinded.setCatDescripcion(categoria.getCatDescripcion());
-            this.categoriaRepository.save(categoriaFinded);
-        }
-
-        return categoriaFinded;
+    @PutMapping("/{id}")
+    public CategoriaResponse updateCategoria(@PathVariable Short id, @RequestBody CategoriaRequest categoria){
+        return this.categoriaService.updateCategoria(categoria, id);
     }
 
-    @DeleteMapping(":id")
+    @DeleteMapping("/{id}")
     public void deleteCategoriaById(@PathVariable Short id){
-        this.categoriaRepository.deleteById(id);
+        this.categoriaService.deleteCategoriaById(id);
     }
 
 }
