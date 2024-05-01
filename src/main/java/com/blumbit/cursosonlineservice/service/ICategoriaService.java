@@ -20,4 +20,8 @@ public interface ICategoriaService {
     CategoriaResponse updateCategoria(CategoriaRequest categoria, Short id);
 
     void deleteCategoriaById(Short id);
+
+    void logicDeleteById(Short id);
+
+    void enableById(Short id);
 }

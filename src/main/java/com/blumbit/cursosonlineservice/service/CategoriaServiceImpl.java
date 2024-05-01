@@ -87,4 +87,22 @@ public class CategoriaServiceImpl implements ICategoriaService{
     public void deleteCategoriaById(Short id) {
         this.categoriaRepository.deleteById(id);
     }
+
+    @Override
+    public void logicDeleteById(Short id) {
+        Categoria categoriaFinded = this.categoriaRepository.findById(id).orElse(null);
+        if(categoriaFinded != null){
+            categoriaFinded.setEstado(false);
+            this.categoriaRepository.save(categoriaFinded);
+        }
+    }
+
+    @Override
+    public void enableById(Short id) {
+        Categoria categoriaFinded = this.categoriaRepository.findById(id).orElse(null);
+        if(categoriaFinded != null){
+            categoriaFinded.setEstado(true);
+            this.categoriaRepository.save(categoriaFinded);
+        }
+    }
 }

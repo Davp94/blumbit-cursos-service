@@ -23,6 +23,9 @@ public class Categoria {
     @Column(length = 100, nullable = true)
     public String catNombre;
 
+    @Column(columnDefinition = "bool default 1")
+    public Boolean estado;
+
     public String catDescripcion;
 
     public Short usuarioCreacion;

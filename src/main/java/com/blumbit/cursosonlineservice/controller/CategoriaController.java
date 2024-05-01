@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/categoria")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CategoriaController {
 
     private final ICategoriaService categoriaService;
@@ -42,9 +43,19 @@ public class CategoriaController {
         return this.categoriaService.updateCategoria(categoria, id);
     }
 
+    @PutMapping("/enable/{id}")
+    public void enableCategoria(@PathVariable Short id){
+        this.categoriaService.enableById(id);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteCategoriaById(@PathVariable Short id){
         this.categoriaService.deleteCategoriaById(id);
+    }
+
+    @DeleteMapping("/logic/{id}")
+    public void logicDeleteCategoriaById(@PathVariable Short id){
+        this.categoriaService.logicDeleteById(id);
     }
 
 }
