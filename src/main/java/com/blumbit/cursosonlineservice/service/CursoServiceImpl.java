@@ -26,19 +26,19 @@ public class CursoServiceImpl implements ICursoService{
 
     @Override
     public Curso enableCurso(Short id) {
-        Curso cursoFinded = this.cursoRepository.findCursoByCurEstadoAndCurId(false, id).orElse(null);
-        if(cursoFinded != null){
+        //Curso cursoFinded = this.cursoRepository.findCursoByCurEstadoAndCurId(false, id).orElse(null);
+        /*if(cursoFinded != null){
             cursoFinded.setCurEstado(true);
-        }
-        return this.cursoRepository.save(cursoFinded);
+        }*/
+        return null;
     }
 
     @Override
     public Curso disableCurso(Short id) {
-        Curso cursoFinded = this.cursoRepository.getCursosByEstadoAndId(true, id).orElse(null);
+        /*Curso cursoFinded = this.cursoRepository.getCursosByEstadoAndId(true, id).orElse(null);
         if(cursoFinded != null){
             cursoFinded.setCurEstado(false);
-        }
-        return this.cursoRepository.save(cursoFinded);
+        }*/
+        return this.cursoRepository.save(null);
     }
 }

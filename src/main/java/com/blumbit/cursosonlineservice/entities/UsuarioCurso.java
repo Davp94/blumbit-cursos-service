@@ -17,11 +17,11 @@ public class UsuarioCurso {
     public Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-    @Column(name = "usu_id")
+    @JoinColumn(name = "usu_id")
     public Usuario usuario;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-    @Column(name = "cur_id")
+    @JoinColumn(name = "cur_id")
     public Curso curso;
 
     @Column(name = "usucur_fecha_registro")
