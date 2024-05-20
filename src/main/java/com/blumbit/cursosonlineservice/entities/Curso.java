@@ -24,7 +24,7 @@ public class Curso {
 
     public Boolean curEstado;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
     public Categoria categoria;
 
 /*    @JoinTable(name = "usuario_curso",

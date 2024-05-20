@@ -3,9 +3,11 @@ package com.blumbit.cursosonlineservice.service;
 import com.blumbit.cursosonlineservice.entities.Categoria;
 import com.blumbit.cursosonlineservice.entities.Curso;
 import com.blumbit.cursosonlineservice.repository.CursoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CursoServiceImpl implements ICursoService{
 
     private final CursoRepository cursoRepository;
@@ -40,5 +42,9 @@ public class CursoServiceImpl implements ICursoService{
             cursoFinded.setCurEstado(false);
         }*/
         return this.cursoRepository.save(null);
+    }
+
+    public boolean validateCurso(Curso curso){
+        return this.cursoRepository.count()<100;
     }
 }
