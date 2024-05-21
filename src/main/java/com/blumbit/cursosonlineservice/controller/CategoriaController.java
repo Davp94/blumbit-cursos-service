@@ -5,6 +5,7 @@ import com.blumbit.cursosonlineservice.dto.response.CategoriaResponse;
 import com.blumbit.cursosonlineservice.entities.Categoria;
 import com.blumbit.cursosonlineservice.repository.CategoriaRepository;
 import com.blumbit.cursosonlineservice.service.ICategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class CategoriaController {
     }
 
     @PostMapping()
-    public CategoriaResponse createCategoria(@RequestBody CategoriaRequest categoriaRequest){
+    public CategoriaResponse createCategoria(@RequestBody @Valid CategoriaRequest categoriaRequest){
         return this.categoriaService.createCategoria(categoriaRequest);
     }
 
