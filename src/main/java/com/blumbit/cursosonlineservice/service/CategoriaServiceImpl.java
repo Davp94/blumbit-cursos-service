@@ -4,6 +4,7 @@ import com.blumbit.cursosonlineservice.dto.request.CategoriaRequest;
 import com.blumbit.cursosonlineservice.dto.response.CategoriaResponse;
 import com.blumbit.cursosonlineservice.dto.response.CategoriasResponse;
 import com.blumbit.cursosonlineservice.entities.Categoria;
+import com.blumbit.cursosonlineservice.exception.CategoriaNotFoundException;
 import com.blumbit.cursosonlineservice.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,8 @@ public class CategoriaServiceImpl implements ICategoriaService{
             categoriaResponse.setDescripcion(cat.getCatDescripcion());
             categoriaResponse.setNombre(cat.getCatNombre());
             categoriaResponse.setCorrelativo(cat.getCatCorrelativo());
+        }else {
+            throw new CategoriaNotFoundException(id);
         }
         return Optional.of(categoriaResponse);
     }
