@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Getter
 @Setter
@@ -26,6 +28,7 @@ public class Curso {
     public Boolean curEstado;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = true, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     public Categoria categoria;
 
 /*    @JoinTable(name = "usuario_curso",
