@@ -1,6 +1,7 @@
 package com.blumbit.cursosonlineservice.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

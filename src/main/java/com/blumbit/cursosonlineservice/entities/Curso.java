@@ -1,6 +1,7 @@
 package com.blumbit.cursosonlineservice.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,7 @@ public class Curso {
 
     public Boolean curEstado;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, optional = true, fetch = FetchType.LAZY)
     public Categoria categoria;
 
 /*    @JoinTable(name = "usuario_curso",
