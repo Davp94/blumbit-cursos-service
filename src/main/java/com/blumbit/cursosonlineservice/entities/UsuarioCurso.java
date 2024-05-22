@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -28,4 +29,9 @@ public class UsuarioCurso {
 
     @Column(name = "usucur_fecha_registro")
     public LocalDate fechaRegistro;
+
+    @PrePersist
+    private void prePersistFechaRegistro(){
+        fechaRegistro = LocalDate.now();
+    }
 }
