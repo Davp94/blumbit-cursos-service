@@ -26,12 +26,5 @@ public class TestController {
         return "HELLO WORLD";
     }
 
-    @GetMapping("cursos")
-    public Page<Curso> findAllCursos(@RequestParam Pageable pageable, String nombre){
-        /*Pageable test1 = PageRequest.of(0, 2);
-        return this.cursoPaginationRepository.findAll(pageable);*/
-        System.out.println(pageable);
-        System.out.println(nombre);
-        return this.cursoPaginationRepository.findByCurNombre(nombre, pageable);
-    }
+
 }

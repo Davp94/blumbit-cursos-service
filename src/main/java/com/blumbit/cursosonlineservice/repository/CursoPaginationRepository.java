@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CursoPaginationRepository extends ListPagingAndSortingRepository<Curso, Short> {
 
-    Page<Curso> findByCurNombre(String curNombre, Pageable pageable);
+    Page<Curso> findByCurNombreContainingIgnoreCase(String curNombre, Pageable pageable);
 }
