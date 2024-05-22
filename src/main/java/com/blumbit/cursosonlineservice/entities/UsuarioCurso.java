@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 public class UsuarioCurso {
 
     @Id
