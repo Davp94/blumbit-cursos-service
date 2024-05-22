@@ -8,23 +8,21 @@ import lombok.Setter;
 @Setter
 public class CategoriaRequest {
 
-    @NotEmpty(message = "El campo no puede ser vacio")
-    public String correlativo;
+   public String correlativo;
 
     @NotNull
     @NotBlank
-    @Size(max = 100, message = "El campo debe tener una longitud maxima de 100 caracteres")
+    @Size(max = 10, message = "El campo debe tener una longitud maxima de 10 caracteres")
     public String nombre;
 
     @NotNull
     @Size(max = 200)
-    @Pattern(regexp = "/*^{0,9}/")
     public String descripcion;
 
-    @Email
+/*    @Email
     public String email;
 
     @Min(0)
     @Max(100)
-    public double price;
+    public double price;*/
 }
