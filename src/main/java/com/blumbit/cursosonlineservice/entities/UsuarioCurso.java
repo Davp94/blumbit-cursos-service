@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -27,10 +28,10 @@ public class UsuarioCurso {
     public Curso curso;
 
     @Column(name = "usucur_fecha_registro")
-    public LocalDate fechaRegistro;
+    public LocalDateTime fechaRegistro;
 
     @PrePersist
     private void prePersistFechaRegistro(){
-        fechaRegistro = LocalDate.now();
+        fechaRegistro = LocalDateTime.now();
     }
 }

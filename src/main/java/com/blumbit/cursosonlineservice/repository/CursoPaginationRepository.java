@@ -8,6 +8,6 @@ import org.springframework.data.repository.ListPagingAndSortingRepository;
 import java.util.List;
 
 public interface CursoPaginationRepository extends ListPagingAndSortingRepository<Curso, Short> {
-
+    // select * from curso where cur_nombre ilike '%?value%'
     Page<Curso> findByCurNombreContainingIgnoreCase(String curNombre, Pageable pageable);
 }
