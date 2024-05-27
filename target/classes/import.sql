@@ -1,0 +1,2 @@
+--INSERT INTO categoria(cat_id, cat_nombre,cat_descripcion) VALUES (1,'cat1','catdesc1');
+--INSERT INTO categoria(cat_id, cat_nombre,cat_descripcion) VALUES (2,'cat2','catdesc2');
