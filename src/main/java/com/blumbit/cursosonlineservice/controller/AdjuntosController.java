@@ -1,6 +1,7 @@
 package com.blumbit.cursosonlineservice.controller;
 
 import com.blumbit.cursosonlineservice.dto.request.AdjuntosRequest;
+import com.blumbit.cursosonlineservice.dto.response.AdjuntosResponse;
 import com.blumbit.cursosonlineservice.service.IAdjuntosService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,8 @@ public class AdjuntosController {
         if(file == null){
             return ResponseEntity.badRequest().body("Error, archivo adjunto necesario");
         }
-        return ResponseEntity.ok(this.adjuntosService.create(new AdjuntosRequest(file.getOriginalFilename(), file)));
+        AdjuntosResponse adjuntosResponse = new AdjuntosResponse();
+        adjuntosResponse.setFilePath(this.adjuntosService.create(new AdjuntosRequest(file.getOriginalFilename(), file)));
+        return ResponseEntity.ok(adjuntosResponse);
     }
 }
